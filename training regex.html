@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Training reguex</title>
+</head>
+<body>
+<!--sBài 1: Kiểm tra chuỗi đưa vào có đúng dạng dd/mm/yyyy
+
+Bài 2: Đếm số từ trong một chuỗi
+
+Bài 3: Đếm số nguyên âm/phụ âm trong một chuỗi
+
+Bài 4: Kiểm tra mã số bảo mật hợp lệ-->
+
+<input type="text" id="idSession1">
+<input type="button" value="validate date" onclick="validateDate()">
+
+<input type="text" id="idSession2">
+<input type="button" value="count char in string" onclick="countCharInString()">
+<input type="button" value="dem so nguyen am" onclick="demNguyenAm()">
+
+<script>
+    function validateDate() {
+        let str = document.getElementById('idSession1').value;
+        regex = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/
+        if (regex.test(str)) {
+            alert("correct");
+        } else alert("incorrect");
+    }
+
+    function countCharInString() {
+        let someString = document.getElementById('idSession2').value;
+        let someChar = /^[a-zA-Z0-9]/;
+        let count = 0;
+
+        for (var i = 0; i < someString.length; i++) {
+            if (someChar.test(someString.charAt(i))) {
+                count++;
+            }
+        }
+        alert(count);
+    }
+
+    function demNguyenAm() {
+        let someString = document.getElementById('idSession2').value;
+        let regxpnAm = /^[eaiou]/
+        let regxppAm = /^[^eaiou]]/
+
+        let countnAm = 0;
+        let countnPam = 0;
+
+        for (let i = 0; i < someString.length; i++) {
+            if (regxpnAm.test(someString.charAt(i))) {
+                countnAm++;
+            }
+        }
+        for (let i = 0; i < someString.length; i++) {
+            if (regxppAm.test(someString.charAt(i))) {
+                countnPam++;
+            }
+        }
+        alert("So nguyen am la: " + countnAm);
+        alert("So phu am la: "+ countnPam)
+    }
+
+
+</script>
+</body>
+</html>
